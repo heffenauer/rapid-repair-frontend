@@ -1,9 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: ["./src/**/*.{html,ts}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        yellow: {
+          700: "#FEFD00",
+        },
+      },
+      fontFamily: {
+        "chakra-petch": ["Chakra Petch", "sans-serif"],
+      },
+    },
   },
   plugins: [],
-}
-
+};
