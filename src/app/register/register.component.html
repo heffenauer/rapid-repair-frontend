@@ -1,38 +1,74 @@
 <div class="h-screen flex justify-center items-center bg-gray-100">
-  <div class="bg-white p-10 rounded-lg shadow-2xl w-full max-w-lg">
-    <div class="flex justify-center text-lg sm:text-xl">
-      <div class="mb-8">
+  <div class="bg-white p-10 rounded-lg shadow-2xl w-full max-w-md">
+    <div class="flex justify-center">
+      <div class="mb-6">
         <!-- Register/Login toggle -->
-        <ul class="flex cursor-pointer">
-          <li class="text-center px-4 pb-2 font-bold text-yellow-500 border-b-4 border-yellow-500">Register</li>
-          <li class="text-center px-4 pb-2 font-bold text-gray-500 hover:text-yellow-500">Log in</li>
+        <ul class="flex text-gray-600 mb-6">
+          <li
+            class="text-center flex-1 px-4 pb-2 font-bold text-gray-600 border-b-4 border-yellow-700"
+          >
+            Register
+          </li>
+          <li
+            class="text-center flex-1 px-4 pb-2 font-bold text-gray-600 hover:text-yellow-700 cursor-pointer"
+          >
+            Log in
+          </li>
         </ul>
       </div>
     </div>
     <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="space-y-6">
       <div class="relative">
-        <input formControlName="email" type="email" placeholder="Email address" class="w-full py-3 px-4 border-b-2 border-gray-300 focus:border-yellow-500 rounded-t-md focus:outline-none text-lg">
+        <input
+          formControlName="email"
+          type="email"
+          placeholder="Email address"
+          class="w-full py-3 px-4 text-lg border-b-2 border-gray-300 focus:border-yellow-700 rounded-t-md focus:outline-none"
+        />
         <!-- Email check icon -->
-        <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-yellow-500">
-          <!-- Ideally, add your SVG or icon here -->
+        <div
+          class="absolute inset-y-0 right-0 pr-3 flex items-center text-yellow-700"
+        >
+          <!-- Add check icon here -->
         </div>
       </div>
       <div class="relative group">
-        <input formControlName="password" [type]="showPassword ? 'text' : 'password'" placeholder="Password" class="w-full py-3 px-4 border-b-2 border-gray-300 focus:border-yellow-500 rounded-t-md focus:outline-none text-lg mb-2">
+        <input
+          formControlName="password"
+          [type]="showPassword ? 'text' : 'password'"
+          placeholder="Password"
+          class="w-full py-3 px-4 text-lg border-b-2 border-gray-300 focus:border-yellow-700 rounded-t-md focus:outline-none"
+        />
         <!-- Password visibility toggle -->
-        <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 cursor-pointer">
-          <button type="button" (click)="toggleShowPassword()" class="text-lg">
-            <span *ngIf="showPassword" class="text-yellow-500">Hide</span>
-            <span *ngIf="!showPassword" class="text-yellow-500">Show</span>
+        <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+          <button
+            type="button"
+            (click)="toggleShowPassword()"
+            class="text-gray-600 text-lg"
+          >
+            <span *ngIf="showPassword">Hide</span>
+            <span *ngIf="!showPassword">Show</span>
           </button>
         </div>
-        
       </div>
       <div class="mt-4">
-        <button type="submit" class="w-full bg-yellow-500 text-white py-3 rounded-lg font-semibold text-lg">Create account</button>
+        <button
+          type="submit"
+          class="w-full bg-yellow-700 text-white py-3 rounded-lg font-semibold text-lg transition duration-300 ease-in-out hover:bg-yellow-800 disabled:cursor-not-allowed"
+          [disabled]="!registerForm.valid"
+          [class.cursor-not-allowed]="!registerForm.valid"
+        >
+          Create account
+        </button>
       </div>
       <!-- Password length verification text -->
-      <p class="text-yellow-600 text-sm mt-2" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError('minlength')">
+      <p
+        class="text-gray-600 text-sm pt-2"
+        *ngIf="
+          registerForm.get('password')?.touched &&
+          registerForm.get('password')?.hasError('minlength')
+        "
+      >
         Password must be at least 8 characters.
       </p>
     </form>
