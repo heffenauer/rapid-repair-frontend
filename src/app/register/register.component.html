@@ -1,68 +1,40 @@
-<body class=" h-screen flex justify-center items-center">
-    <div class="bg-amber-100 p-8 rounded shadow-2xl w-2/5 md:w-112 h-112 md:h-126">
-      <h2 class="text-2xl font-normal mb-4 text-center">
-        <span class="font-bold">Welcome back,</span><br>It's good to see you! Please register to create a Rapid Repair Account.
-      </h2>
-      <form id="loginForm">
-        <div class="mb-6 relative">
-          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <svg class="h-5 w-5 text-gray-500" fill="none" stroke-linecap="round"
-                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-              <path
-                d="M12 2c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm0 18c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8zM19 9.912l-7 5.2-7-5.2M5.5 7.274l6.5 4.726 6.5-4.726M5 17v-9"
-                clip-rule="evenodd" fill-rule="evenodd"></path>
-            </svg>
-          </div>
-          <input id="email" type="email" placeholder="&#9993; Email"
-                 class="appearance-none border rounded w-full py-2 pl-10 pr-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-        </div>
-        <div class="mb-6 relative">
-          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <svg class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M17.57 19.5l-.94-1.58a2 2 0 01-1.69-.92l-1.46-2.45A6 6 0 005 12V9a5 5 0 015-5h1a5 5 0 015 5v3a3 3 0 006 0v-3a5 5 0 015-5h1a5 5 0 015 5v3a6 6 0 00-8.58 2.65l-1.46 2.45a2 2 0 01-1.69.92l-.94 1.58a2 2 0 01-1.74 1H19.3a2 2 0 01-1.73-1z"></path>
-            </svg>
-          </div>
-          <input id="password" type="password" placeholder="Password"
-                 class="appearance-none border rounded w-full py-2 pl-10 pr-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-        </div>
-        <div class="flex justify-end items-center mb-6">
-          <a href="#" class="text-sm text-blue-500">Forgot Password?</a>
-        </div>
-        <div class="flex justify-center">
-        <button type="submit"
-                class="bg-yellow-700 text-black font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline">
-          Sign In
-        </button>
+<div class="h-screen flex justify-center items-center bg-gray-100">
+  <div class="bg-white p-10 rounded-lg shadow-2xl w-full max-w-lg">
+    <div class="flex justify-center text-lg sm:text-xl">
+      <div class="mb-8">
+        <!-- Register/Login toggle -->
+        <ul class="flex cursor-pointer">
+          <li class="text-center px-4 pb-2 font-bold text-yellow-500 border-b-4 border-yellow-500">Register</li>
+          <li class="text-center px-4 pb-2 font-bold text-gray-500 hover:text-yellow-500">Log in</li>
+        </ul>
       </div>
-      </form>
     </div>
-    </body>
-    
-    <script>
-      document.getElementById('loginForm').addEventListener('submit', function (event) {
-        var email = document.getElementById('email').value.trim();
-        var password = document.getElementById('password').value.trim();
-    
-        // Email format validation
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-          alert('Please enter a valid email address.');
-          event.preventDefault(); // Prevent form submission
-          return;
-        }
-    
-        // Simple password validation
-        if (password === '') {
-          alert('Please enter your password.');
-          event.preventDefault(); // Prevent form submission
-          return;
-        }
-    
-        // All fields are valid, continue with form submission
-        // You can add further logic here, like AJAX form submission
-        alert('Form submitted successfully.');
-      });
-    </script>
-    
-    
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="space-y-6">
+      <div class="relative">
+        <input formControlName="email" type="email" placeholder="Email address" class="w-full py-3 px-4 border-b-2 border-gray-300 focus:border-yellow-500 rounded-t-md focus:outline-none text-lg">
+        <!-- Email check icon -->
+        <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-yellow-500">
+          <!-- Ideally, add your SVG or icon here -->
+        </div>
+      </div>
+      <div class="relative group">
+        <input formControlName="password" [type]="showPassword ? 'text' : 'password'" placeholder="Password" class="w-full py-3 px-4 border-b-2 border-gray-300 focus:border-yellow-500 rounded-t-md focus:outline-none text-lg mb-2">
+        <!-- Password visibility toggle -->
+        <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 cursor-pointer">
+          <button type="button" (click)="toggleShowPassword()" class="text-lg">
+            <span *ngIf="showPassword" class="text-yellow-500">Hide</span>
+            <span *ngIf="!showPassword" class="text-yellow-500">Show</span>
+          </button>
+        </div>
+        
+      </div>
+      <div class="mt-4">
+        <button type="submit" class="w-full bg-yellow-500 text-white py-3 rounded-lg font-semibold text-lg">Create account</button>
+      </div>
+      <!-- Password length verification text -->
+      <p class="text-yellow-600 text-sm mt-2" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError('minlength')">
+        Password must be at least 8 characters.
+      </p>
+    </form>
+  </div>
+</div>
