@@ -9,7 +9,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        "chakra-petch": ["Chakra Petch", "sans-serif"],
+        'chakra-petch': ['"Chakra Petch"', 'sans-serif'],
+        'montserrat': ['"Montserrat"', 'sans-serif'],
       },
     },
   },
