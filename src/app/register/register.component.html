@@ -48,55 +48,67 @@
           />
         </div>
 
-<!-- Password -->
-<div class="relative group">
-  <input
-    formControlName="password"
-    [type]="showPassword ? 'text' : 'password'"
-    placeholder="Password"
-    class="w-full py-3 px-4 text-lg border-b-2 border-gray-300 focus:border-yellow-700 rounded-t-md focus:outline-none"
-  />
-  <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-    <button
-    type="button"
-    (click)="toggleShowPassword()"
-    class="text-gray-600 text-lg"
-  >
-    <span *ngIf="showPassword">Hide</span>
-    <span *ngIf="!showPassword">Show</span>
-  </button>
-  </div>
-  <!-- Feedback for password using optional chaining -->
-  <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors" class="text-red-500 text-sm mt-1">
-    <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</div>
-    <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</div>
-  </div>
-</div>
+        <!-- Password -->
+        <div class="relative group">
+          <input
+            formControlName="password"
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Password"
+            class="w-full py-3 px-4 text-lg border-b-2 border-gray-300 focus:border-yellow-700 rounded-t-md focus:outline-none"
+          />
+          <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+            <button
+              type="button"
+              (click)="toggleShowPassword()"
+              class="text-gray-600 text-lg"
+            >
+              <span *ngIf="showPassword">Hide</span>
+              <span *ngIf="!showPassword">Show</span>
+            </button>
+          </div>
+          <!-- Feedback for password using optional chaining -->
+          <div
+            *ngIf="
+              registerForm.get('password')?.touched &&
+              registerForm.get('password')?.errors
+            "
+            class="text-red-500 text-sm mt-1"
+          >
+            <div *ngIf="registerForm.get('password')?.errors?.['required']">
+              Password is required.
+            </div>
+            <div *ngIf="registerForm.get('password')?.errors?.['minlength']">
+              Password must be at least 8 characters long.
+            </div>
+          </div>
+        </div>
 
-<!-- Confirm Password -->
-<div class="relative group">
-  <input
-    formControlName="confirmPassword"
-    [type]="showPassword ? 'text' : 'password'"
-    placeholder="Confirm Password"
-    class="w-full py-3 px-4 text-lg border-b-2 border-gray-300 focus:border-yellow-700 rounded-t-md focus:outline-none"
-  />
-  <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-    <button
-    type="button"
-    (click)="toggleShowPassword()"
-    class="text-gray-600 text-lg"
-  >
-    <span *ngIf="showPassword">Hide</span>
-    <span *ngIf="!showPassword">Show</span>
-  </button>
-  </div>
-  <!-- Feedback for confirm password using optional chaining -->
-  <div *ngIf="registerForm.errors?.['notSame'] && registerForm.get('confirmPassword')?.touched" class="text-red-500 text-sm mt-1">
-    Passwords do not match.
-  </div>
-</div>
-
+        <!-- Confirm Password -->
+        <div class="relative group">
+          <input
+            formControlName="confirmPassword"
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Confirm Password"
+            class="w-full py-3 px-4 text-lg border-b-2 border-gray-300 focus:border-yellow-700 rounded-t-md focus:outline-none"
+          />
+          <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+            <button
+              type="button"
+              (click)="toggleShowPassword()"
+              class="text-gray-600 text-lg"
+            >
+              <span *ngIf="showPassword">Hide</span>
+              <span *ngIf="!showPassword">Show</span>
+            </button>
+          </div>
+          <!-- Feedback for confirm password using optional chaining -->
+          <div
+            *ngIf="registerForm.errors?.['notSame'] && registerForm.get('confirmPassword')?.touched"
+            class="text-red-500 text-sm mt-1"
+          >
+            Passwords do not match.
+          </div>
+        </div>
 
         <!-- Role -->
         <div class="relative">
