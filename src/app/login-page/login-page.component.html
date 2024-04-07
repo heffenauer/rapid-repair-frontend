@@ -1,0 +1,79 @@
+<body class="bg-gray-100">
+
+<form id="form" [formGroup]="form" class="h-screen flex justify-center items-center bg-gray-100">
+
+  <div class="justify-center flex">
+    <div class="mb-3 bg-gray-100 flex justify-center j items-center  w-1 md:w-11/12 lg:w- 3/6 ">
+      <img src="assets/repair_man.svg" alt="Repair Man Logo"/>
+    </div>
+  </div>
+
+  <div class="bg-white p-10 rounded-lg shadow-xl w-11/12 md:w-1/2 lg:w-1/3">
+    <h2 class="text-2xl font-semibold mb-6 text-center text-gray-600">
+      <span class="font-bold text-gray-600">Welcome back,</span><br>Good seeing you again! Please log in to your
+      account.
+    </h2>
+    <div class="mb-8 relative">
+      <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+      </div>
+      <input formControlName="email" id="email" type="email" placeholder="Email"
+             class="w-full py-3 px-4 text-lg border-b-2 border-gray-300 focus:border-yellow-700 rounded-t-md focus:outline-none">
+    </div>
+    <div class="mb-8 relative">
+      <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+      </div>
+      <input formControlName="password" id="password" type="password" placeholder="Password"
+             class="w-full py-3 px-4 text-lg border-b-2 border-gray-300 focus:border-yellow-700 rounded-t-md focus:outline-none">
+    </div>
+    <div class="flex justify-end items-center mb-8">
+      <a href="#" class="text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200">Forgot Password?</a>
+    </div>
+    <div class="flex justify-center">
+      <button type="submit" (click)="clickButton()"
+              class="bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-2 px-6 rounded-full focus:outline-none focus:shadow-outline transition-all duration-200">
+        Sign In
+      </button>
+    </div>
+
+  </div>
+</form>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    var form = document.getElementById('form');
+
+
+    form.addEventListener('submit', function (event) {
+
+      event.preventDefault();
+
+
+      var email = document.getElementById('email').value.trim();
+      var password = document.getElementById('password').value.trim();
+
+
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+      if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+
+      if (password.length < 4) {
+        alert('Password must be longer than 4 characters.');
+        return;
+      }
+
+
+      console.log('Form is valid, proceed with AJAX or form submission');
+
+    });
+  });
+</script>
+</body>
+
+
+
