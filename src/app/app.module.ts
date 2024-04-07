@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
 import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FooterComponent } from './footer/footer.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
     HomeComponent,
     HeaderComponent,
     LoginPageComponent,
-    ProfilepageComponent
+    ProfilepageComponent,
+    FooterComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

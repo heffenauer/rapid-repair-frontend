@@ -1,26 +1,26 @@
-<form [formGroup]="form" class="h-screen flex justify-center items-center bg-gray-50">
-<div class="bg-amber-100 p-10 rounded-lg shadow-xl w-11/12 md:w-1/2 lg:w-1/3">
-  <h2 class="text-2xl font-semibold mb-6 text-center">
-    <span class="font-bold">Welcome back,</span><br>Good seeing you again! Please log in to your account.
+<body class="bg-gray-100">
+
+<form [formGroup]="form" class="h-screen flex justify-center items-center bg-gray-100">
+
+  <div class="justify-center flex">
+    <div class="mb-3 bg-gray-100 flex justify-center j items-center  w-1 md:w-11/12 lg:w- 3/6 ">
+      <img src="assets/repair_man.svg" alt="Repair Man Logo"  />
+    </div>
+  </div>
+
+  <div class="bg-white p-10 rounded-lg shadow-xl w-11/12 md:w-1/2 lg:w-1/3">
+  <h2 class="text-2xl font-semibold mb-6 text-center text-gray-600">
+    <span class="font-bold text-gray-600">Welcome back,</span><br>Good seeing you again! Please log in to your account.
   </h2>
     <div class="mb-8 relative">
       <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-        <!-- Email Icon -->
-        <!-- Updated icons for a cleaner look -->
-        <svg class="h-6 w-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 11-8 0 4 4 0 018 0zm0 0v8m-8 0a8 8 0 1016 0v-8a8 8 0 10-16 0z" />
-        </svg>
       </div>
-      <input formControlName="email" id="email" type="email" placeholder="Email" class="appearance-none border rounded-lg w-full py-3 pl-12 pr-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline shadow-sm">
+      <input formControlName="email" id="email" type="email" placeholder="Email" class="w-full py-3 px-4 text-lg border-b-2 border-gray-300 focus:border-yellow-700 rounded-t-md focus:outline-none">
     </div>
     <div class="mb-8 relative">
       <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-        <!-- Password Icon -->
-        <svg class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0v-7a9 9 0 0118 0v7z" />
-        </svg>
       </div>
-      <input formControlName="password" id="password" type="password" placeholder="Password" class="appearance-none border rounded-lg w-full py-3 pl-12 pr-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline shadow-sm">
+      <input formControlName="password" id="password" type="password" placeholder="Password" class="w-full py-3 px-4 text-lg border-b-2 border-gray-300 focus:border-yellow-700 rounded-t-md focus:outline-none">
     </div>
     <div class="flex justify-end items-center mb-8">
       <a href="#" class="text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200">Forgot Password?</a>
@@ -31,7 +31,7 @@
 
 </div>
 </form>
-
+</body>
 <script>
   document.getElementById('form').addEventListener('submit', function (event) {
     var email = document.getElementById('email').value.trim();
