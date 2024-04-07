@@ -12,10 +12,11 @@ const routes: Routes = [
   { path: 'profile', component: ProfilepageComponent },
   { path: 'register', component:RegisterComponent}
 
+];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { };

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {filter, map} from "rxjs";
-import { Component } from '@angular/core';
 
 
 @Component({
@@ -27,7 +26,4 @@ currentRoute: string = '';
         })
       ).subscribe();
   }
-export class HeaderComponent {
-
-
-}
+};
