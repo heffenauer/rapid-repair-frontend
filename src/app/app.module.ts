@@ -9,6 +9,8 @@ import { ProfilepageComponent } from './profilepage/profilepage.component';
 import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
+import { ServiceDetailsCleaningComponent} from "./service-details-cleaning/service-details-cleaning.component";
+import {BookCleaniningServiceComponent} from "./book-cleanining-service/book-cleanining-service.component";
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { RegisterComponent } from './register/register.component';
     ProfilepageComponent,
     FooterComponent,
     RegisterComponent,
+    ServiceDetailsCleaningComponent,
+    BookCleaniningServiceComponent,
   ],
   imports: [
     BrowserModule,
