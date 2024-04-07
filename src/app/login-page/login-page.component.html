@@ -1,6 +1,6 @@
 <body class="bg-gray-100">
 
-<form [formGroup]="form" class="h-screen flex justify-center items-center bg-gray-100">
+<form id="form" [formGroup]="form" class="h-screen flex justify-center items-center bg-gray-100">
 
   <div class="justify-center flex">
     <div class="mb-3 bg-gray-100 flex justify-center j items-center  w-1 md:w-11/12 lg:w- 3/6 ">
@@ -31,30 +31,43 @@
 
 </div>
 </form>
-</body>
+
 <script>
-  document.getElementById('form').addEventListener('submit', function (event) {
-    var email = document.getElementById('email').value.trim();
-    var password = document.getElementById('password').value.trim();
+  document.addEventListener('DOMContentLoaded', function() {
 
-    // Email format validation
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-      alert('Please enter a valid email address.');
-      event.preventDefault(); // Prevent form submission
-      return;
-    }
+    var form = document.getElementById('form');
 
-    // Simple password validation
-    if (password === '') {
-      alert('Please enter your password.');
-      event.preventDefault(); // Prevent form submission
-      return;
-    }
 
-    // All fields are valid, continue with form submission
-    // You can add further logic here, like AJAX form submission
-    alert('Form submitted successfully.');
+    form.addEventListener('submit', function(event) {
+
+      event.preventDefault();
+
+
+      var email = document.getElementById('email').value.trim();
+      var password = document.getElementById('password').value.trim();
+
+
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+      if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+
+      if (password.length < 4) {
+        alert('Password must be longer than 4 characters.');
+        return;
+      }
+
+
+      console.log('Form is valid, proceed with AJAX or form submission');
+    
+    });
   });
 </script>
+</body>
+
+
 
