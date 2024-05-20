@@ -1,4 +1,5 @@
-export enum Routes{
+export enum Route{
   home= 'home',
-  profile='profile'
+  profile='profile',
+  users ='users'
 }
