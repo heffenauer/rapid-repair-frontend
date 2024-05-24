@@ -10,6 +10,7 @@ import { UsersComponent } from "./users/users.component";
 import { ServicesComponent } from "./servicelistinghtml/services.component";
 import { Route } from "./constants/routes";
 import { ServiceListService } from './services/service-list.service';
+import { combineLatest } from 'rxjs';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect empty path to home
@@ -19,8 +20,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'serviceclean', component: ServiceDetailsCleaningComponent },
   { path: 'bookclean', component: BookCleaniningServiceComponent },
-  { path: 'services', component: ServicesComponent},  //this needs to be changed when the environment stuff is set -din
   { path: Route.users, component: UsersComponent },
+  { path: Route.services, component: ServicesComponent},
  
 ];
 
