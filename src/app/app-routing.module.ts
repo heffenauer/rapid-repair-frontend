@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'serviceclean', component: ServiceDetailsCleaningComponent },
   { path: 'bookclean', component: BookCleaniningServiceComponent },
-  { path: 'services', component: ServicesComponent},
+  { path: 'services', component: ServicesComponent},  //this needs to be changed when the environment stuff is set -din
   { path: Route.users, component: UsersComponent },
  
 ];
