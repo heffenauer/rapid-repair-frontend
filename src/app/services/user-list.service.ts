@@ -2,12 +2,13 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserDTOInterface} from "../models/user-dto-interface";
+import { environment } from "../../environments/environment.prod";
 
 @Injectable()
 export class UserListService {
 
 
-  private url: string = 'http://localhost:8080/users';
+  private url: string = `${environment.backendUrl}/users`;
 
 
   constructor(private http: HttpClient) {

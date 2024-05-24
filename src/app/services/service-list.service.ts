@@ -2,13 +2,14 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { ServiceDTOInterface } from "../models/service-dto-interface";
+import { environment } from "../../environments/environment.prod";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceListService {
 
-  private url: string = 'http://localhost:8080/services';
+  private url: string = `${environment.backendUrl}/services`;
 
   constructor(private http: HttpClient) { }
 
