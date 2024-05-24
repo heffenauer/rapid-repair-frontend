@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "rapid-repair-frontend-temp": {
+    "rapid-repair-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -41,7 +41,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/rapid-repair-frontend-temp",
+            "outputPath": "dist/rapid-repair-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -85,10 +85,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "rapid-repair-frontend-temp:build:production"
+              "buildTarget": "rapid-repair-frontend:build:production"
             },
             "development": {
-              "buildTarget": "rapid-repair-frontend-temp:build:development"
+              "buildTarget": "rapid-repair-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -96,7 +96,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "rapid-repair-frontend-temp:build"
+            "buildTarget": "rapid-repair-frontend:build"
           }
         },
         "test": {
