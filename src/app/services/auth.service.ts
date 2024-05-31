@@ -16,7 +16,7 @@ export class AuthService {
       map((response: any) => {
         console.log('Login response:', response); // Log the response
         if (response && response.data.token) {
-          localStorage.setItem('authToken', response.data.token);
+          localStorage.setItem('token', response.data.token);
         }
         return response;
       })
@@ -24,10 +24,10 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem('token');
   }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('authToken');
+    return !!localStorage.getItem('token');
   }
 }
