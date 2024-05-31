@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { filter, map } from "rxjs";
 import { AuthService } from '../services/auth.service';  
+import { Route } from '../constants/routes';
 
 @Component({
   selector: 'app-header',
@@ -32,6 +33,6 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     this.authService.logout();
-    this.router.navigate(['/']);  // Redirect to home or login page after logout
+    this.router.navigate([Route.home]);  // Redirect to home or login page after logout
   }
 }
