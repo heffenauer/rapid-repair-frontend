@@ -15,8 +15,8 @@ export class AuthService {
     return this.http.post(this.apiUrl, credentials).pipe(
       map((response: any) => {
         console.log('Login response:', response); // Log the response
-        if (response && response.token) {
-          localStorage.setItem('authToken', response.token);
+        if (response && response.data.token) {
+          localStorage.setItem('authToken', response.data.token);
         }
         return response;
       })
