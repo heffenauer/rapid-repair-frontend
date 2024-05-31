@@ -14,14 +14,14 @@
       <div class="mb-8 relative">
         <input formControlName="email" id="email" type="email" placeholder="Email"
                class="w-full py-3 px-4 text-lg border-b-2 border-gray-300 focus:border-yellow-700 rounded-t-md focus:outline-none">
-        <div *ngIf="form.controls.email.invalid && form.controls.email.touched" class="text-red-500 text-sm">
+        <div *ngIf="form.controls['email'].invalid && form.controls['email'].touched" class="text-red-500 text-sm">
           Please enter a valid email.
         </div>
       </div>
       <div class="mb-8 relative">
         <input formControlName="password" id="password" type="password" placeholder="Password"
                class="w-full py-3 px-4 text-lg border-b-2 border-gray-300 focus:border-yellow-700 rounded-t-md focus:outline-none">
-        <div *ngIf="form.controls.password.invalid && form.controls.password.touched" class="text-red-500 text-sm">
+        <div *ngIf="form.controls['password'].invalid && form.controls['password'].touched" class="text-red-500 text-sm">
           Password is required.
         </div>
       </div>
