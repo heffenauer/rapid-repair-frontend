@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'http://localhost:8080',
+  backendUrl: 'https://rapid-repair-backend-59fc436d8db1.herokuapp.com',
 };
 
 /*
