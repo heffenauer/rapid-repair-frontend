@@ -1,178 +1,19 @@
-<div *ngIf="currentRoute =='login'">
-  <header
-    class="bg-yellow-700 py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center"
-  >
+<div *ngIf="currentRoute == 'login' || currentRoute == 'register' || currentRoute == 'home' || currentRoute == 'profile' || currentRoute == 'serviceclean' || currentRoute == 'bookclean'">
+  <header class="bg-yellow-700 py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center">
     <div class="flex items-center">
       <img src="assets/logo.svg" alt="Logo" class="h-12 mr-4"/>
-
       <h1 class="text-3xl font-bold font-chakra-petch">Rapid Repair</h1>
     </div>
     <nav class="flex items-center">
-      <a
-        routerLink="/home"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Home</a
-      >
-      <a
-        routerLink="/services"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Services</a
-      >
-
-      <a
-        routerLink="/register"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg"
-      >Register</a
-      >
-    </nav>
-  </header>
-</div>
-
-<div *ngIf="currentRoute=='home'">
-  <header
-    class="bg-yellow-700 py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center"
-  >
-    <div class="flex items-center">
-      <img src="assets/logo.svg" alt="Logo" class="h-12 mr-4"/>
-
-      <h1 class="text-3xl font-bold font-chakra-petch">Rapid Repair</h1>
-    </div>
-    <nav class="flex items-center">
-      <a
-        routerLink="/home"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Home</a
-      >
-      <a
-        routerLink="/services"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Services</a
-      >
-      <a
-        routerLink="/login"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Login</a
-      >
-      <a
-        routerLink="/register"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg"
-      >Register</a
-      >
-    </nav>
-  </header>
-</div>
-
-<div *ngIf="currentRoute=='register'">
-  <header
-    class="bg-yellow-700 py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center"
-  >
-    <div class="flex items-center">
-      <img src="assets/logo.svg" alt="Logo" class="h-12 mr-4"/>
-
-      <h1 class="text-3xl font-bold font-chakra-petch">Rapid Repair</h1>
-    </div>
-    <nav class="flex items-center">
-      <a
-        routerLink="/home"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Home</a
-      >
-      <a
-        routerLink="/services"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Services</a
-      >
-      <a
-        routerLink="/login"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Login</a
-      >
-
-    </nav>
-  </header>
-</div>
-
-<div *ngIf="currentRoute=='profile'">
-  <header
-    class="bg-yellow-700 py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center"
-  >
-    <div class="flex items-center">
-      <img src="assets/logo.svg" alt="Logo" class="h-12 mr-4"/>
-
-      <h1 class="text-3xl font-bold font-chakra-petch">Rapid Repair</h1>
-    </div>
-    <nav class="flex items-center">
-      <a
-        routerLink="/home"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Home</a
-      >
-      <a
-        routerLink="/services"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Services</a
-      >
-
-    </nav>
-  </header>
-</div>
-
-<div *ngIf="currentRoute=='serviceclean'">
-  <header
-    class="bg-yellow-700 py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center"
-  >
-    <div class="flex items-center">
-      <img src="assets/logo.svg" alt="Logo" class="h-12 mr-4"/>
-
-      <h1 class="text-3xl font-bold font-chakra-petch">Rapid Repair</h1>
-    </div>
-    <nav class="flex items-center">
-      <a
-        routerLink="/home"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Home</a
-      >
-      <a
-        routerLink="/services"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Services</a
-      >
-      <a
-        routerLink="/login"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Login</a
-      >
-
-    </nav>
-  </header>
-</div>
-
-<div *ngIf="currentRoute=='bookclean'">
-  <header
-    class="bg-yellow-700 py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center"
-  >
-    <div class="flex items-center">
-      <img src="assets/logo.svg" alt="Logo" class="h-12 mr-4"/>
-
-      <h1 class="text-3xl font-bold font-chakra-petch">Rapid Repair</h1>
-    </div>
-    <nav class="flex items-center">
-      <a
-        routerLink="/home"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Home</a
-      >
-      <a
-        routerLink="/services"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Services</a
-      >
-      <a
-        routerLink="/login"
-        class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4"
-      >Login</a
-      >
-
+      <a routerLink="/home" class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4">Home</a>
+      <a routerLink="/services" class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4">Services</a>
+      <ng-container *ngIf="!authService.isAuthenticated(); else loggedIn">
+        <a routerLink="/login" class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4">Login</a>
+        <a routerLink="/register" class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg">Register</a>
+      </ng-container>
+      <ng-template #loggedIn>
+        <a (click)="logout()" class="text-gray-900 font-semibold font-montserrat hover:text-gray-700 text-lg mr-4">Logout</a>
+      </ng-template>
     </nav>
   </header>
 </div>

@@ -15,8 +15,19 @@ export class AuthService {
     return this.http.post(this.apiUrl, credentials).pipe(
       map((response: any) => {
         console.log('Login response:', response); // Log the response
+        if (response && response.token) {
+          localStorage.setItem('authToken', response.token);
+        }
         return response;
       })
     );
+  }
+
+  logout(): void {
+    localStorage.removeItem('authToken');
+  }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('authToken');
   }
 }
