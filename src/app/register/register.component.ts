@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  AbstractControl,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';  // Import the AuthService
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'register-component',
@@ -14,12 +11,19 @@ export class RegisterComponent {
   registerForm: FormGroup;
   showPassword: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {  // Inject the AuthService
     this.registerForm = this.fb.group(
       {
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(8)]],
-        confirmPassword: [''], // No initial validators here; validation is done through the form-level custom validator below
+        confirmPassword: [''],
+        role: [''],
+        country: [''],
+        timezone: [''],
+        website: [''],
+        bio: [''],
       },
       { validator: this.checkPasswords }
     );
@@ -32,10 +36,29 @@ export class RegisterComponent {
     return password === confirmPassword ? null : { notSame: true };
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     if (this.registerForm.valid) {
-      console.log('Registration data:', this.registerForm.value);
-      // TODO: Call a backend API to handle the registration logic.
+      const formValues = this.registerForm.value;
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(formValues.password, salt);
+
+      const registrationData = {
+        ...formValues,
+        password: hashedPassword,
+      };
+
+      console.log('Registration data with hashed password:', registrationData);
+
+      this.authService.register(registrationData).subscribe(
+        (response) => {
+          console.log('Registration successful:', response);
+          // Handle successful registration, e.g., redirect to login page
+        },
+        (error) => {
+          console.error('Registration error:', error);
+          // Handle registration error
+        }
+      );
     } else {
       console.error('Form is not valid', this.registerForm.errors);
     }
