@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';  // Import the AuthService
-import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'register-component',
@@ -36,18 +35,16 @@ export class RegisterComponent {
     return password === confirmPassword ? null : { notSame: true };
   }
 
-  async onSubmit(): Promise<void> {
+  onSubmit(): void {
     if (this.registerForm.valid) {
       const formValues = this.registerForm.value;
-      // const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(formValues.password, 10);
 
       const registrationData = {
         ...formValues,
-        password: hashedPassword,
+        password: formValues.password,  // Send plaintext password
       };
 
-      console.log('Registration data with hashed password:', registrationData);
+      console.log('Registration data with plaintext password:', registrationData);
 
       this.authService.register(registrationData).subscribe(
         (response) => {
