@@ -39,8 +39,8 @@ export class RegisterComponent {
   async onSubmit(): Promise<void> {
     if (this.registerForm.valid) {
       const formValues = this.registerForm.value;
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(formValues.password, salt);
+      // const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(formValues.password, 10);
 
       const registrationData = {
         ...formValues,
