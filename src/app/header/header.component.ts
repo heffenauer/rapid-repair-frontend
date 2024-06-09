@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
-import { filter, map } from "rxjs/operators";
-import { AuthService } from '../services/auth.service';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';  // Import AuthService
 import { Route } from '../constants/routes';
 
 @Component({
