@@ -15,14 +15,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(credentials: { email: string, password: string }): Observable<UserDTOInterface> {
+  login(credentials: { email: string, password: string }): Observable<any> {
     return this.http.post(this.apiUrl, credentials).pipe(
       map((response: any) => {
         console.log('Login response:', response);
         if (response && response.data.token) {
           localStorage.setItem(this.tokenKey, response.data.token);
+          return response;  // Return the entire response object
         }
-        return response.data.user as UserDTOInterface;
+        throw new Error('Token not found');
       })
     );
   }

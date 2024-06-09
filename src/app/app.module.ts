@@ -12,7 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { ServiceDetailsCleaningComponent } from "./service-details-cleaning/service-details-cleaning.component";
 import { BookCleaniningServiceComponent } from "./book-cleanining-service/book-cleanining-service.component";
 import { UserListService } from "./services/user-list.service";
-import { UsersComponent } from './users/users.component';
+//import { UsersComponent } from './users/users.component';
 import { ServicesComponent } from './servicelistinghtml/services.component';
 import { ServiceListService } from './services/service-list.service';
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
@@ -29,7 +29,7 @@ import { HttpClientModule } from "@angular/common/http";
     RegisterComponent,
     ServiceDetailsCleaningComponent,
     BookCleaniningServiceComponent,
-    UsersComponent,
+  //  UsersComponent,
     ServicesComponent,
   ],
   imports: [

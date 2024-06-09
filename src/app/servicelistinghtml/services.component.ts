@@ -1,5 +1,5 @@
 // /src/app/services/services.component.ts
-/*
+
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from "rxjs";
 import { ServiceListService } from "../services/service-list.service";
@@ -90,4 +90,4 @@ export class ServicesComponent implements OnInit, OnDestroy {
     }
   }
 }
-*/
+
