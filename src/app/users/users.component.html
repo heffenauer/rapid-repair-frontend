@@ -1,132 +1,136 @@
-<div *ngIf="user">
-  <h1>Created</h1>
-</div>
+<!-- <div *ngIf="user"> -->
+<!--   <h1>Created</h1> -->
+<!-- </div> -->
 
-<div class="container mx-auto px-4">
-  <div class="overflow-x-auto">
-    <table class="min-w-full bg-white">
-      <thead>
-      <tr>
-        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100">Name</th>
-        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100">Surname</th>
-        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100">Age</th>
-        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100">Email</th>
-        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100">Password</th>
-        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100">Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let user of users" class="border-b border-gray-200 hover:bg-gray-100">
-        <td class="py-2 px-4">{{ user.name }}</td>
-        <td class="py-2 px-4">{{ user.surname }}</td>
-        <td class="py-2 px-4">{{ user.age }}</td>
-        <td class="py-2 px-4">{{ user.email }}</td>
-        <td class="py-2 px-4">{{ user.password }}</td>
-        <td class="py-2 px-4">
-          <button class="bg-blue-500 text-white py-1 px-3 rounded-lg mr-2" (click)="getOneUser(user.id)">Select</button>
-          <button class="bg-red-500 text-white py-1 px-3 rounded-lg" (click)="deleteUser(user.id)">Delete</button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<!-- <div class="container mx-auto px-4"> -->
+<!--   <div class="overflow-x-auto"> -->
+<!--     <table class="min-w-full bg-white"> -->
+<!--       <thead> -->
+<!--       <tr> -->
+<!--         <th class="py-2 px-4 border-b border-gray-200 bg-gray-100">Name</th> -->
+<!--         <th class="py-2 px-4 border-b border-gray-200 bg-gray-100">Surname</th> -->
+<!--         <th class="py-2 px-4 border-b border-gray-200 bg-gray-100">Age</th> -->
+<!--         <th class="py-2 px-4 border-b border-gray-200 bg-gray-100">Email</th> -->
+<!--         <th class="py-2 px-4 border-b border-gray-200 bg-gray-100">Password</th> -->
+<!--         <th class="py-2 px-4 border-b border-gray-200 bg-gray-100">Actions</th> -->
+<!--       </tr> -->
+<!--       </thead> -->
+<!--       <tbody> -->
+<!--       <tr *ngFor="let user of users" class="border-b border-gray-200 hover:bg-gray-100"> -->
+<!--         <td class="py-2 px-4">{{ user.name }}</td> -->
+<!--         <td class="py-2 px-4">{{ user.surname }}</td> -->
+<!--         <td class="py-2 px-4">{{ user.email }}</td> -->
+<!--         <td class="py-2 px-4">{{ user.password }}</td> -->
+<!--         <td class="py-2 px-4">{{ user.bio }}</td> -->
+<!--         <td class="py-2 px-4">{{ user.website }}</td> -->
+<!--         <td class="py-2 px-4">{{ user.country }}</td> -->
+<!--         <td class="py-2 px-4">{{ user.role }}</td> -->
+<!--         <td class="py-2 px-4">{{ user.timezone }}</td> -->
+<!--         <td class="py-2 px-4"> -->
+<!--           <button class="bg-blue-500 text-white py-1 px-3 rounded-lg mr-2" (click)="getOneUser(user.id)">Select</button> -->
+<!--           <button class="bg-red-500 text-white py-1 px-3 rounded-lg" (click)="deleteUser(user.id)">Delete</button> -->
+<!--         </td> -->
+<!--       </tr> -->
+<!--       </tbody> -->
+<!--     </table> -->
+<!--   </div> -->
+<!-- </div> -->
 
-<div>
-  <section class="py-3">
-    <div class="container px-4 mx-auto">
-      <div class="p-8 bg-white rounded-xl border border-sky-500">
-        <div
-          class="flex flex-wrap items-center justify-center -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
-          <div class="w-full sm:w-auto px-4 mb-6 sm:mb-0 flex justify-center items-center">
-            <h4 class="text-2xl font-bold tracking-wide text-blue-400 mb-1">User Info</h4>
-          </div>
-        </div>
-        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-          <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
-            <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
-              <span class="text-sm font-medium text-black">Name</span>
-            </div>
-            <div class="w-full sm:w-2/3 px-4">
-              <div class="max-w-xl">
-                <div class="flex flex-wrap items-center -mx-3">
-                  <div class="w-full sm:w-1/2 px-3 mb-3 sm:mb-0">
-                    <input
-                      formControlName="name"
-                      class="block py-4 px-3 w-full text-sm text-black placeholder-black font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
-                      type="text" placeholder="John">
-                  </div>
-                  <div class="w-full sm:w-1/2 px-3">
-                    <input
-                      formControlName="surname"
-                      class="block py-4 px-3 w-full text-sm text-black placeholder-black font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
-                      type="text" placeholder="Doe">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
-            <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
-              <span class="text-sm font-medium text-black">Age</span>
-            </div>
-            <div class="w-full sm:w-2/3 px-4">
-              <div class="max-w-xl">
-                <input
-                  formControlName="age"
-                  class="block py-4 px-3 w-full text-sm text-black placeholder-black font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
-                  type="number" placeholder="30">
-              </div>
-            </div>
-          </div>
-          <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
-            <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
-              <span class="text-sm font-medium text-black">Email address</span>
-            </div>
-            <div class="w-full sm:w-2/3 px-4">
-              <div class="max-w-xl">
-                <input
-                  formControlName="email"
-                  class="block py-4 px-3 w-full text-sm text-black placeholder-black font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
-                  type="email" placeholder="johndoe@trizzle.ui">
-              </div>
-            </div>
-          </div>
-          <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
-            <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
-              <span class="text-sm font-medium text-black">Password</span>
-            </div>
-            <div class="w-full sm:w-2/3 px-4">
-              <div class="max-w-xl">
-                <input
-                  formControlName="password"
-                  class="block py-4 px-3 w-full text-sm text-black placeholder-black font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg"
-                  type="password" placeholder="Enter your password">
-              </div>
-            </div>
-          </div>
-          <div
-            class="flex flex-wrap items-center justify-center -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
-            <div>
-              <button type="button" *ngIf="user" (click)="updateUser()"
-                      class="inline-block py-2 px-4 text-xs text-center font-semibold leading-normal text-blue-50 bg-blue-500 hover:bg-blue-600 rounded-lg transition duration-200"
-                      href="#">Edit
-              </button>
-              <button type="submit"
-                      class="inline-block py-2 px-4 text-xs text-center font-semibold leading-normal text-blue-50 bg-blue-500 hover:bg-blue-600 rounded-lg transition duration-200 m-1">
-                Save
-              </button>
+<!-- <div> -->
+<!--   <section class="py-3"> -->
+<!--     <div class="container px-4 mx-auto"> -->
+<!--       <div class="p-8 bg-white rounded-xl border border-sky-500"> -->
+<!--         <div -->
+<!--           class="flex flex-wrap items-center justify-center -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20"> -->
+<!--           <div class="w-full sm:w-auto px-4 mb-6 sm:mb-0 flex justify-center items-center"> -->
+<!--             <h4 class="text-2xl font-bold tracking-wide text-blue-400 mb-1">User Info</h4> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--         <form [formGroup]="userForm" (ngSubmit)="onSubmit()"> -->
+<!--           <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20"> -->
+<!--             <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0"> -->
+<!--               <span class="text-sm font-medium text-black">Name</span> -->
+<!--             </div> -->
+<!--             <div class="w-full sm:w-2/3 px-4"> -->
+<!--               <div class="max-w-xl"> -->
+<!--                 <div class="flex flex-wrap items-center -mx-3"> -->
+<!--                   <div class="w-full sm:w-1/2 px-3 mb-3 sm:mb-0"> -->
+<!--                     <input -->
+<!--                       formControlName="name" -->
+<!--                       class="block py-4 px-3 w-full text-sm text-black placeholder-black font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg" -->
+<!--                       type="text" placeholder="John"> -->
+<!--                   </div> -->
+<!--                   <div class="w-full sm:w-1/2 px-3"> -->
+<!--                     <input -->
+<!--                       formControlName="surname" -->
+<!--                       class="block py-4 px-3 w-full text-sm text-black placeholder-black font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg" -->
+<!--                       type="text" placeholder="Doe"> -->
+<!--                   </div> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--           <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20"> -->
+<!--             <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0"> -->
+<!--               <span class="text-sm font-medium text-black">Age</span> -->
+<!--             </div> -->
+<!--             <div class="w-full sm:w-2/3 px-4"> -->
+<!--               <div class="max-w-xl"> -->
+<!--                 <input -->
+<!--                   formControlName="age" -->
+<!--                   class="block py-4 px-3 w-full text-sm text-black placeholder-black font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg" -->
+<!--                   type="number" placeholder="30"> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--           <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20"> -->
+<!--             <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0"> -->
+<!--               <span class="text-sm font-medium text-black">Email address</span> -->
+<!--             </div> -->
+<!--             <div class="w-full sm:w-2/3 px-4"> -->
+<!--               <div class="max-w-xl"> -->
+<!--                 <input -->
+<!--                   formControlName="email" -->
+<!--                   class="block py-4 px-3 w-full text-sm text-black placeholder-black font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg" -->
+<!--                   type="email" placeholder="johndoe@trizzle.ui"> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--           <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20"> -->
+<!--             <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0"> -->
+<!--               <span class="text-sm font-medium text-black">Password</span> -->
+<!--             </div> -->
+<!--             <div class="w-full sm:w-2/3 px-4"> -->
+<!--               <div class="max-w-xl"> -->
+<!--                 <input -->
+<!--                   formControlName="password" -->
+<!--                   class="block py-4 px-3 w-full text-sm text-black placeholder-black font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg" -->
+<!--                   type="password" placeholder="Enter your password"> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--           <div -->
+<!--             class="flex flex-wrap items-center justify-center -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20"> -->
+<!--             <div> -->
+<!--               <button type="button" *ngIf="user" (click)="updateUser()" -->
+<!--                       class="inline-block py-2 px-4 text-xs text-center font-semibold leading-normal text-blue-50 bg-blue-500 hover:bg-blue-600 rounded-lg transition duration-200" -->
+<!--                       href="#">Edit -->
+<!--               </button> -->
+<!--               <button type="submit" -->
+<!--                       class="inline-block py-2 px-4 text-xs text-center font-semibold leading-normal text-blue-50 bg-blue-500 hover:bg-blue-600 rounded-lg transition duration-200 m-1"> -->
+<!--                 Save -->
+<!--               </button> -->
 
-            </div>
+<!--             </div> -->
 
-            <button type="button" *ngIf="user" (click)="loadUsers()"
-                    class="inline-block py-2 px-4 text-xs text-center font-semibold leading-normal text-blue-50 bg-blue-500 hover:bg-blue-600 rounded-lg transition duration-200">
-              Refresh
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
+<!--             <button type="button" *ngIf="user" (click)="loadUsers()" -->
+<!--                     class="inline-block py-2 px-4 text-xs text-center font-semibold leading-normal text-blue-50 bg-blue-500 hover:bg-blue-600 rounded-lg transition duration-200"> -->
+<!--               Refresh -->
+<!--             </button> -->
+<!--           </div> -->
+<!--         </form> -->
+<!--       </div> -->
+<!--     </div> -->
+<!--   </section> -->
 
-</div>
+<!-- </div> -->

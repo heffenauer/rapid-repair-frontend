@@ -1,4 +1,5 @@
 // /src/app/services/services.component.ts
+/*
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from "rxjs";
 import { ServiceListService } from "../services/service-list.service";
@@ -7,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-services',
-  templateUrl: './services.component.html',
+  templateUrl: 'services.component.html',
 })
 export class ServicesComponent implements OnInit, OnDestroy {
 
@@ -89,3 +90,4 @@ export class ServicesComponent implements OnInit, OnDestroy {
     }
   }
 }
+*/

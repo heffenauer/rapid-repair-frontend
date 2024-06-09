@@ -6,7 +6,7 @@ import { ProfilepageComponent } from "./profilepage/profilepage.component";
 import { RegisterComponent } from "./register/register.component";
 import { ServiceDetailsCleaningComponent } from "./service-details-cleaning/service-details-cleaning.component";
 import { BookCleaniningServiceComponent } from "./book-cleanining-service/book-cleanining-service.component";
-import { UsersComponent } from "./users/users.component";
+//import { UsersComponent } from "./users/users.component";
 import { ServicesComponent } from "./servicelistinghtml/services.component";
 import { Route } from "./constants/routes";
 import { ServiceListService } from './services/service-list.service';
@@ -20,9 +20,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'serviceclean', component: ServiceDetailsCleaningComponent },
   { path: 'bookclean', component: BookCleaniningServiceComponent },
-  { path: Route.users, component: UsersComponent },
+  //{ path: Route.users, component: UsersComponent },
   { path: Route.services, component: ServicesComponent},
- 
+
 ];
 
 @NgModule({

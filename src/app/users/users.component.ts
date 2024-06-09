@@ -1,3 +1,5 @@
+
+/*
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject, takeUntil} from "rxjs";
 import {UserListService} from "../services/user-list.service";
@@ -95,3 +97,4 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
 }
+*/
