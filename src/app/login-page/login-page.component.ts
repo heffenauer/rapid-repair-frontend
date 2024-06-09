@@ -39,4 +39,5 @@ export class LoginPageComponent {
       this.form.markAllAsTouched(); // Mark all fields as touched to show validation errors
     }
   }
+  
 }
