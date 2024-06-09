@@ -8,17 +8,18 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
   private apiUrl = 'https://rapid-repair-backend-59fc436d8db1.herokuapp.com/authenticate';
-  private registerUrl = 'https://rapid-repair-backend-59fc436d8db1.herokuapp.com/register';  // Add the register URL
-  private tokenKey = 'token';  // Define the key to use for the token
+  private registerUrl = 'https://rapid-repair-backend-59fc436d8db1.herokuapp.com/register';
+  private userInfoUrl = 'https://rapid-repair-backend-59fc436d8db1.herokuapp.com/user-info';
+  private updateUserInfoUrl = 'https://rapid-repair-backend-59fc436d8db1.herokuapp.com/update-user'; // Add the update user info URL
+  private tokenKey = 'token';
 
   constructor(private http: HttpClient) { }
 
   login(credentials: { email: string, password: string }): Observable<any> {
     return this.http.post(this.apiUrl, credentials).pipe(
       map((response: any) => {
-        console.log('Login response:', response);  // Log the response
         if (response && response.data.token) {
-          localStorage.setItem('token', response.data.token);
+          localStorage.setItem(this.tokenKey, response.data.token);
         }
         return response;
       })
@@ -26,14 +27,28 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('token');
+    localStorage.removeItem(this.tokenKey);
   }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem(this.tokenKey);
   }
 
   register(data: any): Observable<any> {
     return this.http.post(this.registerUrl, data);
+  }
+
+  getUserInfo(): Observable<any> {
+    const token = localStorage.getItem(this.tokenKey);
+    return this.http.get(this.userInfoUrl, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+  }
+
+  updateUserInfo(data: any): Observable<any> {
+    const token = localStorage.getItem(this.tokenKey);
+    return this.http.put(this.updateUserInfoUrl, data, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
   }
 }
