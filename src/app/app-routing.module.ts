@@ -8,26 +8,22 @@ import { ServiceDetailsCleaningComponent } from "./service-details-cleaning/serv
 import { BookCleaniningServiceComponent } from "./book-cleanining-service/book-cleanining-service.component";
 import { UsersComponent } from "./users/users.component";
 import { ServicesComponent } from "./servicelistinghtml/services.component";
-import { Route } from "./constants/routes";
-import { ServiceListService } from './services/service-list.service';
-import { combineLatest } from 'rxjs';
+import { authGuard } from './authentication-guard/authentication-guard.component';  // Import the functional guard
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect empty path to home
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'profile', component: ProfilepageComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'serviceclean', component: ServiceDetailsCleaningComponent },
-  { path: 'bookclean', component: BookCleaniningServiceComponent },
-  { path: Route.users, component: UsersComponent },
-  { path: Route.services, component: ServicesComponent},
- 
+  { path: 'bookclean', component: BookCleaniningServiceComponent, canActivate: [authGuard] },
+  { path: 'users', component: UsersComponent },
+  { path: 'services', component: ServicesComponent },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

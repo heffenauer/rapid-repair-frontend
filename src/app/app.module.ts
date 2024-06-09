@@ -17,6 +17,7 @@ import { ServicesComponent } from './servicelistinghtml/services.component';
 import { ServiceListService } from './services/service-list.service';
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 import { HttpClientModule } from "@angular/common/http";
+import { AuthenticationGuardComponent } from './authentication-guard/authentication-guard.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HttpClientModule } from "@angular/common/http";
     BookCleaniningServiceComponent,
     UsersComponent,
     ServicesComponent,
+    AuthenticationGuardComponent,
   ],
   imports: [
     BrowserModule,
