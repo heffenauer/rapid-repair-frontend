@@ -12,6 +12,7 @@ export class AuthService {
   private registerUrl = 'https://rapid-repair-backend-59fc436d8db1.herokuapp.com/register';
   private userInfoUrl = 'https://rapid-repair-backend-59fc436d8db1.herokuapp.com/users/user';
   private tokenKey = 'token';
+  private userIdKey = 'userId';
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +22,7 @@ export class AuthService {
         console.log('Login response:', response);
         if (response && response.data.token) {
           localStorage.setItem(this.tokenKey, response.data.token);
+          localStorage.setItem(this.userIdKey, response.data.user.id);
           return response;  // Return the entire response object
         }
         throw new Error('Token not found');
@@ -30,6 +32,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem(this.userIdKey);
   }
 
   isAuthenticated(): boolean {
@@ -40,27 +43,30 @@ export class AuthService {
     return localStorage.getItem(this.tokenKey);
   }
 
+  getUserId(): string | null {
+    return localStorage.getItem(this.userIdKey);
+  }
+
   getUserInfo(): Observable<UserDTOInterface> {
     const token = this.getToken();
+    const userId = this.getUserId();
+    if (!token || !userId) {
+      throw new Error('No token or user ID found');
+    }
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    const userId = this.getUserIdFromToken(token);  // Assuming you have a method to extract user ID from token
     return this.http.get<UserDTOInterface>(`${this.userInfoUrl}/${userId}`, { headers });
   }
 
   updateUserInfo(user: UserDTOInterface): Observable<any> {
     const token = this.getToken();
+    if (!token) {
+      throw new Error('No token found');
+    }
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.put(`${this.userInfoUrl}/${user.id}`, user, { headers });
   }
 
   register(data: any): Observable<any> {
     return this.http.post(this.registerUrl, data);
-  }
-
-  private getUserIdFromToken(token: string | null): number | null {
-    if (!token) return null;
-    // Assuming the token is a JWT token and user ID is stored in the payload
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    return payload.id || null;  // Adjust according to your token structure
   }
 }
