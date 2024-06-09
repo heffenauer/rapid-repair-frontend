@@ -18,6 +18,7 @@ import { ServiceListService } from './services/service-list.service';
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 import { HttpClientModule } from "@angular/common/http";
 
+
 @NgModule({
   declarations: [
     AppComponent,
