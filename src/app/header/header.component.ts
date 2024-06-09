@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
-import { filter, map } from "rxjs";
-import { AuthService } from '../services/auth.service';  
+import { filter, map } from "rxjs/operators";
+import { AuthService } from '../services/auth.service';
 import { Route } from '../constants/routes';
 
 @Component({
@@ -12,8 +12,8 @@ export class HeaderComponent implements OnInit {
   currentRoute: string = '';
 
   constructor(
-    private activatedRoute: ActivatedRoute, 
-    private router: Router, 
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
     public authService: AuthService  // Inject AuthService
   ) {}
 

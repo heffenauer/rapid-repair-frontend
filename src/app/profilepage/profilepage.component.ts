@@ -1,16 +1,11 @@
-import {Component} from '@angular/core';
-import {Subject} from "rxjs";
-import {UserDTOInterface} from "../models/user-dto-interface";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profilepage',
   templateUrl: './profilepage.component.html',
-
 })
 export class ProfilepageComponent {
-
-
   form: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -18,7 +13,6 @@ export class ProfilepageComponent {
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      photo: [null],
       role: ['', Validators.required],
       country: ['', Validators.required],
       timezone: ['', Validators.required],
