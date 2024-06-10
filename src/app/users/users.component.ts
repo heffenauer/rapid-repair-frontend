@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subject, takeUntil} from "rxjs";
-import {UserListService} from "../services/user-list.service";
-import {UserDTOInterface} from "../models/user-dto-interface";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, takeUntil } from "rxjs";
+import { UserListService } from "../services/user-list.service";
+import { UserDTOInterface } from "../models/user-dto-interface";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-users',
@@ -18,22 +18,25 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   constructor(private service: UserListService, formBuilder: FormBuilder) {
     this.userForm = formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15)]],
-      surname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15)]],
-      age: ['', [Validators.required, Validators.min(18), Validators.max(100)]],
+      firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15)]],
+      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15)]],
       email: ['', [Validators.required, Validators.email]],
+      role: ['', Validators.required],
+      country: ['', Validators.required],
+      timezone: ['', Validators.required],
+      website: ['', [Validators.pattern('https?://.+')]],
+      bio: [''],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   ngOnInit(): void {
-    this.loadUsers()
+    this.loadUsers();
   }
 
-
   ngOnDestroy(): void {
-    this.unsubscribe$.next()
-    this.unsubscribe$.complete()
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   loadUsers(): void {
@@ -49,14 +52,18 @@ export class UsersComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(user => {
         this.userForm.setValue({
-          name: user.name,
-          surname: user.surname,
-          age: user.age,
+          firstName: user.firstName,
+          lastName: user.lastName,
           email: user.email,
+          role: user.role,
+          country: user.country,
+          timezone: user.timezone,
+          website: user.website,
+          bio: user.bio,
           password: user.password,
-        })
+        });
         this.user = user;
-      })
+      });
   }
 
   deleteUser(id: number): void {
@@ -64,34 +71,32 @@ export class UsersComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(() => {
         this.loadUsers();
-
-      })
+      });
   }
 
   onSubmit(): void {
     if (this.userForm.valid) {
       this.service.createUser(this.userForm.value)
         .pipe(takeUntil(this.unsubscribe$))
-        .subscribe();
+        .subscribe(() => {
+          this.loadUsers();
+        });
 
       console.log('Form Submitted');
     } else {
       console.log('Form is invalid');
     }
-
-
   }
 
   updateUser(): void {
-    this.service.updateUser(this.user.id, this.userForm.value)
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(() => {
-        this.loadUsers();
-
-
-      })
-
-
+    if (this.userForm.valid) {
+      this.service.updateUser(this.user.id, this.userForm.value)
+        .pipe(takeUntil(this.unsubscribe$))
+        .subscribe(() => {
+          this.loadUsers();
+        });
+    } else {
+      console.log('Form is invalid');
+    }
   }
-
 }
