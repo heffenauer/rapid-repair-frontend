@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -8,15 +8,15 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
   private apiUrl = 'https://rapid-repair-backend-59fc436d8db1.herokuapp.com/authenticate';
-  private registerUrl = 'https://rapid-repair-backend-59fc436d8db1.herokuapp.com/register';  // Add the register URL
-  private tokenKey = 'token';  // Define the key to use for the token
+  private registerUrl = 'https://rapid-repair-backend-59fc436d8db1.herokuapp.com/register';
+  private tokenKey = 'token';
 
   constructor(private http: HttpClient) { }
 
   login(credentials: { email: string, password: string }): Observable<any> {
-    return this.http.post(this.apiUrl, credentials).pipe(
+    return this.http.post(this.apiUrl, credentials, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), withCredentials: true }).pipe(
       map((response: any) => {
-        console.log('Login response:', response);  // Log the response
+        console.log('Login response:', response);
         if (response && response.data.token) {
           localStorage.setItem('token', response.data.token);
         }
@@ -34,6 +34,6 @@ export class AuthService {
   }
 
   register(data: any): Observable<any> {
-    return this.http.post(this.registerUrl, data);
+    return this.http.post(this.registerUrl, data, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), withCredentials: true });
   }
 }
