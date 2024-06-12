@@ -3,11 +3,35 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "RapidRepairWeb": {
+    "rapid-repair-frontend": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
         "@schematics/angular:component": {
-          "style": "scss"
+          "skipTests": true,
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true,
+          "standalone": false
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true,
+          "standalone": false
+        },
+        "@schematics/angular:resolver": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -15,33 +39,34 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/rapid-repair-frontend",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              {
-                "glob": "**/*",
-                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
-                "output": "/assets/"
-              }
+              "src/assets"
             ],
             "styles": [
-              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           },
           "configurations": {
             "production": {
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
               "budgets": [
                 {
                   "type": "initial",
@@ -54,15 +79,18 @@
                   "maximumError": "4kb"
                 }
               ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -71,10 +99,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "RapidRepairWeb:build:production"
+              "buildTarget": "rapid-repair-frontend:build:production"
             },
             "development": {
-              "browserTarget": "RapidRepairWeb:build:development"
+              "buildTarget": "rapid-repair-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +110,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "RapidRepairWeb:build"
+            "buildTarget": "rapid-repair-frontend:build"
           }
         },
         "test": {
@@ -93,14 +121,12 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           }
@@ -109,6 +135,6 @@
     }
   },
   "cli": {
-    "analytics": "7e3d0166-7da4-4bf6-a660-2cc7f8b7da73"
+    "analytics": false
   }
 }
