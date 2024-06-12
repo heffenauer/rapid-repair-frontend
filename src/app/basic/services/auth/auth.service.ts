@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {map, Observable} from 'rxjs';
 import {UserStoargeService} from '../storage/user-stoarge.service';
 
-const BASIC_URL = 'https://rapid-repair-backend-59fc436d8db1.herokuapp.com';
+const BASIC_URL = 'https://rapid-repair-backend-59fc436d8db1.herokuapp.com/';
 export const AUTH_HEADER = 'authorization';
 
 @Injectable({
