@@ -1,50 +1,53 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { ProfilepageComponent } from './profilepage/profilepage.component';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { FooterComponent } from './footer/footer.component';
-import { RegisterComponent } from './register/register.component';
-import { ServiceDetailsCleaningComponent } from "./service-details-cleaning/service-details-cleaning.component";
-import { BookCleaniningServiceComponent } from "./book-cleanining-service/book-cleanining-service.component";
-import { UserListService } from "./services/user-list.service";
-import { UsersComponent } from './users/users.component';
-import { ServicesComponent } from './servicelistinghtml/services.component';
-import { ServiceListService } from './services/service-list.service';
-import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
-import { HttpClientModule } from "@angular/common/http";
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {LoginComponent} from './basic/components/login/login.component';
+import {SingupComponent} from './basic/components/singup/singup.component';
+import {en_US, NZ_I18N} from 'ng-zorro-antd/i18n';
+import {registerLocaleData} from '@angular/common';
+import en from '@angular/common/locales/en';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {DemoNgZorroAntdModule} from './DemoNgZorroAntdModule';
+import {SignupClientComponent} from './basic/components/signup-client/signup-client.component';
+import {SignupCompanyComponent} from './basic/components/signup-company/signup-company.component';
+import {FooterComponent} from './footer/footer.component';
+import {HomeComponent} from './home/home.component';
+import {ClientModule} from "./client/client.module";
+import {CompanyModule} from "./company/company.module";
+
+
+registerLocaleData(en);
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    HeaderComponent,
-    LoginPageComponent,
-    ProfilepageComponent,
+    LoginComponent,
+    SingupComponent,
+    SignupClientComponent,
+    SignupCompanyComponent,
     FooterComponent,
-    RegisterComponent,
-    ServiceDetailsCleaningComponent,
-    BookCleaniningServiceComponent,
-    UsersComponent,
-    ServicesComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    DemoNgZorroAntdModule,
     ReactiveFormsModule,
-    HttpClientModule
+    ClientModule,
+    CompanyModule
   ],
   providers: [
-    provideAnimationsAsync(),
-    UserListService,
-    ServiceListService
+    {provide: NZ_I18N, useValue: en_US}
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
